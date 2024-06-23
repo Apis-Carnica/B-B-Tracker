@@ -83,7 +83,7 @@ async def on_message(message):
             if " " in message.content and message.content.split(' ')[-1] != '':
                 print("request has at least one parameter")
                 t_id = message.content.split(' ')[-1]
-                print("Adding {} to the users database.").format(t_id)
+                print("Adding {} to the users database.".format(t_id))
                 if usersCheckRecord(t_id) != []:
                     usersSetRecord(t_id, str(message.author.id), 0, 0, 0, 0)
                     await message.channel.send("All done!")
@@ -99,6 +99,6 @@ async def on_message(message):
         if message.content == '$erm':
             erm = os.getenv('ERM')
             os.environ['ERM'] = str(int(erm) + 1)
-            await message.channel.send("Tigerfart has said 'erm' {} times!").format(os.getenv('ERM'))
+            await message.channel.send("Tigerfart has said 'erm' {} times!".format(os.getenv('ERM')))
 
 client.run(TOKEN)
