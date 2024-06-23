@@ -97,5 +97,6 @@ async def on_message(message):
         if message.content == '$erm':
             erm = os.getenv('ERM')
             os.environ['ERM'] = str(erm + 1)
+            await message.channel.send("Tigerfart has said 'erm' {} times!").format(os.getenv('ERM'))
 
 client.run(TOKEN)
