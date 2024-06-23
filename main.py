@@ -79,7 +79,9 @@ async def on_ready():
 async def on_message(message):
     if message.channel.id == 1253253393913479199:
         if message.content.startswith('$link'):
-            if len(message.content.split(' ')) == 2:
+            print("Got link request.")
+            if " " in message.content and message.content.split(' ')[-1] != '':
+                print("request has at least one parameter")
                 t_id = message.content.split(' ')[-1]
                 print("Adding {} to the users database.").format(t_id)
                 if usersCheckRecord(t_id) != []:
@@ -96,7 +98,7 @@ async def on_message(message):
     if message.channel.id == 1253253393913479199:
         if message.content == '$erm':
             erm = os.getenv('ERM')
-            os.environ['ERM'] = str(erm + 1)
+            os.environ['ERM'] = str(int(erm) + 1)
             await message.channel.send("Tigerfart has said 'erm' {} times!").format(os.getenv('ERM'))
 
 client.run(TOKEN)
