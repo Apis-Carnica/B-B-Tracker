@@ -77,11 +77,10 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.channel.id == 1253253393913479199:
-        if message.content.startswith('$link'):
-            t_id = message.content.split(' ')[-1]
-            usersSetRecord(t_id, str(message.author.id), 0, 0, 0, 0)
-            await message.channel.send("User {} has been added.".format(t_id))
+    if message.content.startswith('$link'):
+        t_id = message.content.split(' ')[-1]
+        usersSetRecord(t_id, str(message.author.id), 0, 0, 0, 0)
+        await message.channel.send("User has been added.")
 
 
 @client.event
