@@ -79,18 +79,8 @@ async def on_ready():
 async def on_message(message):
     if message.channel.id == 1253253393913479199:
         if message.content.startswith('$link'):
-            print("Got link request.")
-            if " " in message.content and message.content.split(' ')[-1] != '':
-                print("request has at least one parameter")
-                t_id = message.content.split(' ')[-1]
-                print("Adding {} to the users database.".format(t_id))
-                if usersCheckRecord(t_id) != []:
-                    usersSetRecord(t_id, str(message.author.id), 0, 0, 0, 0)
-                    await message.channel.send("All done!")
-                else:
-                    await message.channel.send("You're in here bud.")
-            else:
-                await message.channel.send("I'll need a Twitch username.")
+            usersSetRecord(t_id, str(message.author.id), 0, 0, 0, 0)
+            await message.channel.send("User {} has been added.".format(t_id))
 
 
 @client.event
