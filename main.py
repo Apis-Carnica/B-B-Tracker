@@ -79,10 +79,23 @@ async def on_ready():
 async def on_message(message):
     if message.channel.id == 1253253393913479199:
         if message.content.startswith('$link'):
-            t_id = message.content.split(' ')[-1]
-            print(t_id)
-            usersSetRecord(t_id, str(message.author.id), 0, 0, 0, 0)
-            await message.channel.send("All done!")
+            if len(message.split(' ')) >= 2:
+                t_id = message.content.split(' ')[-1]
+                print("Adding {} to the users database.").format(t_id)
+                if usersCheckRecord(t_id) != []:
+                    usersSetRecord(t_id, str(message.author.id), 0, 0, 0, 0)
+                    await message.channel.send("All done!")
+                else:
+                    await message.channel.send("You're in here bud.")
+            else:
+                await message.channel.send("I'll need a Twitch username.")
 
+
+@client.event
+async def on_message(message):
+    if message.channel.id == 1253253393913479199:
+        if message.content == '$erm':
+            erm = os.getenv('ERM')
+            os.environ('ERM') = str(erm + 1)
 
 client.run(TOKEN)
