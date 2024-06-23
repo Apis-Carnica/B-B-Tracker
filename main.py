@@ -79,7 +79,7 @@ async def on_ready():
 async def on_message(message):
     if message.channel.id == 1253253393913479199:
         if message.content.startswith('$link'):
-            if len(message.split(' ')) >= 2:
+            if len(message.content.split(' ')) == 2:
                 t_id = message.content.split(' ')[-1]
                 print("Adding {} to the users database.").format(t_id)
                 if usersCheckRecord(t_id) != []:
