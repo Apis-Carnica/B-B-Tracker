@@ -96,6 +96,6 @@ async def on_message(message):
     if message.channel.id == 1253253393913479199:
         if message.content == '$erm':
             erm = os.getenv('ERM')
-            os.environ('ERM') = str(erm + 1)
+            os.environ['ERM'] = str(erm + 1)
 
 client.run(TOKEN)
