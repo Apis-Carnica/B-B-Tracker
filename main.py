@@ -85,10 +85,10 @@ async def on_message(message):
 
         elif message.content.startswith('$link'):
             if " " in message.content and len(message.content.split(' ')) > 2:
-            t_id = message.content.split(' ')[-1]
-            usersSetRecord(t_id, str(message.author.id), 0, 0, 0, 0)
-            await message.channel.send("You've been added, {}!".format(t_id))
-            print(usersCheckRecord(t_id))
+                t_id = message.content.split(' ')[-1]
+                usersSetRecord(t_id, str(message.author.id), 0, 0, 0, 0)
+                await message.channel.send("You've been added, {}!".format(t_id))
+                print(usersCheckRecord(t_id))
 
 
 
