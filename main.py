@@ -76,22 +76,23 @@ async def on_ready():
 
 
 @client.event
-async def on_message(message):
-    if message.channel.id == 1254650979832434719:
-        if message.content.startswith('$link'):
-            print('link request')
-            #t_id = message.content.split(' ')[-1]
-            #usersSetRecord(t_id, str(message.author.id), 0, 0, 0, 0)
-            #await message.channel.send("User has been added.")
-
-
-@client.event
+"""
+This function is a real big piece of shit and will work as soon as the stream ends :3
+"""
 async def on_message(message):
     if message.channel.id == 1253253393913479199:
         if message.content == '$erm':
             erm = os.getenv('ERM')
             os.environ['ERM'] = str(int(erm) + 1)
             await message.channel.send("Tigerfart has said 'erm' {} times!".format(os.getenv('ERM')))
+
+        elif message.content.startswith('$link'):
+            if " " in message.content and len(message.content.split(' ')) > 2:
+            t_id = message.content.split(' ')[-1]
+            usersSetRecord(t_id, str(message.author.id), 0, 0, 0, 0)
+            await message.channel.send("You've been added, {}!".format(t_id))
+            print(usersCheckRecord(t_id))
+
 
 
 client.run(TOKEN)
