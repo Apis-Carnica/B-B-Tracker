@@ -121,8 +121,8 @@ async def on_ready():
 @bot.tree.command(name='erm')
 async def erm(interaction: discord.Interaction):
     erm = os.environ['ERM']
-    dotenv.set_key(dotenv.find_dotenv(), "ERM", str(int(erm) + 1))
     await interaction.response.send_message(f"Tigerfae has said 'erm' {erm} times!")
+    dotenv.set_key(dotenv.find_dotenv(), "ERM", str(int(erm) + 1))
 
 
 @bot.tree.command(name='link')
