@@ -43,7 +43,7 @@ def sheetCreate(id: str,):
 def sheetFind(id: str) -> list:
     conx = dbConnect()
     cursor = conx.cursor()
-    sql = "SELECT * FROM sheets WHERE id = %s"
+    sql = "SELECT charname FROM sheets WHERE id = %s"
     val = (id)
     cursor.execute(sql, val)
     result = cursor.fetchall()
@@ -128,8 +128,16 @@ async def erm(interaction: discord.Interaction):
 @bot.tree.command(name='link')
 @app_commands.describe(t_id = 'Your Twitch account name')
 async def link(interaction: discord.Interaction, t_id: str):
-        usersSetRecord(t_id, str(interaction.user.id), 0, 0, 0, 0)
-        await interaction.response.send_message(f"You've successfully tied the user `{t_id}` to your account, {interaction.user.name}!")
+    usersSetRecord(t_id, str(interaction.user.id), 0, 0, 0, 0)
+    await interaction.response.send_message(f"You've successfully tied the user `{t_id}` to your account, {interaction.user.name}!")
+
+
+@bot.tree.command(name='sheetlist')
+@app_commands.describe(t_id = 'Which user should I grab the character sheets for?')
+async def sheetlist(interaction: discord.Interaction, t_id: str):
+    id = usersCheckRecord(t_id)[1]
+    sheetlist = sheetFind(id)
+    await interaction.response.send_message(f"Here are the sheets we've found that belong to {t_id}:\r\n {sheetlist}")
 
 
 #@client.command()
