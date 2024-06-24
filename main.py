@@ -77,7 +77,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.channel.id == 1253253393913479199:
+    if message.channel.id == 1254650979832434719:
         if message.content.startswith('$link'):
             print('link request')
             #t_id = message.content.split(' ')[-1]
