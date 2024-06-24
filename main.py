@@ -67,7 +67,7 @@ def usersDeleteRecord(t_id: str):
 
 
 intents = discord.Intents.all()
-client = discord.Bot(command_prefix='$', intents=intents)
+client = discord.Client(command_prefix='$', intents=intents)
 
 
 @client.event
