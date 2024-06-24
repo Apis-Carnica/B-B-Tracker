@@ -76,9 +76,6 @@ async def on_ready():
 
 
 @client.event
-"""
-This function is a real big piece of shit and will work as soon as the stream ends :3
-"""
 async def on_message(message):
     if message.channel.id == 1253253393913479199:
         if message.content == '$erm':
