@@ -77,11 +77,12 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    print(message.content)
-#    if message.content.startswith('$link'):
-        #t_id = message.content.split(' ')[-1]
-        #usersSetRecord(t_id, str(message.author.id), 0, 0, 0, 0)
-        #await message.channel.send("User has been added.")
+    if message.channel.id == 1253253393913479199:
+        if message.content.startswith('$link'):
+            print('link request')
+            #t_id = message.content.split(' ')[-1]
+            #usersSetRecord(t_id, str(message.author.id), 0, 0, 0, 0)
+            #await message.channel.send("User has been added.")
 
 
 @client.event
@@ -91,5 +92,6 @@ async def on_message(message):
             erm = os.getenv('ERM')
             os.environ['ERM'] = str(int(erm) + 1)
             await message.channel.send("Tigerfart has said 'erm' {} times!".format(os.getenv('ERM')))
+
 
 client.run(TOKEN)
